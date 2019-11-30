@@ -1,5 +1,5 @@
 # knnring
-Implementation of knn (V1. synchronous)  
+Implementation of knn (V2. asynchronous)  
 ## Run the code with its own main function  
 **In order to run the code with the provided main function you need to go to the knnring directory through the bash and do the following**:
 1.  open the terminal and change directory using this command **cd path/knn-ring-mpi/Test_MPI_Asynchronous/knnring** where path is where you saved the repository in your own computer 
