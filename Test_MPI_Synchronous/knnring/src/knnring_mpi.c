@@ -30,8 +30,13 @@ if(rcv < 0) rcv = p - 1;
 if(dst > p-1) dst = 0;
 int tag = 1;                                                                    //the tag for the MPI_Recv and MPI_Send
 MPI_Status Stat;                                                                //variable that shows the status of the communication
+
 double *corpus = (double *)malloc(n*d*sizeof(double));                          //Allocating memory for the corpus we are going to receive
+if( corpus == NULL ) exit(EXIT_FAILURE);
+
 double *corpustosend = (double *)malloc(n*d*sizeof(double));                    //Allocating memory for the corpus we are goind to send
+if( corpustosend == NULL ) exit(EXIT_FAILURE);
+
 for(int i=0;i<n;i++){                                                           //Every process first calculates with itself
     for(int j=0;j<d;j++){
       *(corpus +i*d+j)=*(X +i*d+j);
@@ -125,13 +130,19 @@ return result;
 knnresult kNN(double * X, double * Y, int n , int m , int d , int k){
   knnresult result;                                 //the variable where we store the result
   result.nidx = (int *)malloc(m*k*sizeof(int));     // allocating space for the ids and the diastances of the neighbors of its point
+  if( result.nidx == NULL ) exit(EXIT_FAILURE);
+
   result.ndist = (double *)malloc(m*k*sizeof(double));
+  if( result.ndist == NULL ) exit(EXIT_FAILURE);
+
   result.m = m;                                     // setting the number of query points and the number of neighbors
   result.k = k;
+
   int *ids = (int *)malloc(n*sizeof(int));          //allocating space for the ids
+  if( ids == NULL ) exit(EXIT_FAILURE);
 
   double *D = (double *)malloc(n*m*sizeof(double)); // m-by-n matrix for the distances
-
+  if( D == NULL ) exit(EXIT_FAILURE);
 
   double temp=0.0;                                  // helper variable
 

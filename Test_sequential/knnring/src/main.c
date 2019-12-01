@@ -29,7 +29,9 @@ double p_time;
 int main(){
 
     double *X=(double *)malloc(N*D*sizeof(double));
+    if( X == NULL ) exit(EXIT_FAILURE);
     double *Y=(double *)malloc(M*D*sizeof(double));
+    if( Y == NULL ) exit(EXIT_FAILURE);
 
     //printf("--Corpus set X--\n");
     for(int i=0; i<N; i++){

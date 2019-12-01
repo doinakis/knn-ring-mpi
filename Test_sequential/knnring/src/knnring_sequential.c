@@ -18,13 +18,19 @@ knnresult kNN(double * X, double * Y, int n , int m , int d , int k){
   knnresult result;                                 //the variable where we store the result
 
   result.nidx = (int *)malloc(m*k*sizeof(int));     // allocating space for the ids and the diastances of the neighbors of its point
+  if( result.nidx == NULL ) exit(EXIT_FAILURE);
+
   result.ndist = (double *)malloc(m*k*sizeof(double));
+  if( result.ndist == NULL ) exit(EXIT_FAILURE);
+
   result.m = m;                                     // setting the number of query points and the number of neighbors
   result.k = k;
+
   int *ids = (int *)malloc(n*sizeof(int));          //allocating space for the ids
+  if( ids == NULL ) exit(EXIT_FAILURE);
 
   double *D = (double *)malloc(n*m*sizeof(double)); // m-by-n matrix for the distances
-
+  if( D == NULL ) exit(EXIT_FAILURE);
 
   double temp=0.0;                                  // helper variable
 

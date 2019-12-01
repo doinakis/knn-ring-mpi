@@ -45,11 +45,13 @@ int main(int argc, char *argv[])
   if (id == 0) {                // ..... MASTER
 
     corpusAll = (double * ) malloc( p*n*d * sizeof(double) );
+    if( corpusAll == NULL ) exit(EXIT_FAILURE);
 
     for (int ip = 0; ip < p; ip++){
 
       // "read" new chunk
       corpus = (double * ) malloc( n*d * sizeof(double) );
+      if( corpus == NULL ) exit(EXIT_FAILURE);
 
       for (int i=0;i<n*d;i++){
         corpusAll[i+ip*n*d] = ( (double) (rand()) ) / (double) RAND_MAX;
@@ -78,6 +80,7 @@ int main(int argc, char *argv[])
     MPI_Status Stat;
 
     corpus = (double * ) malloc( n*d * sizeof(double) );
+    if( corpus == NULL ) exit(EXIT_FAILURE);
     MPI_Recv(corpus, n*d, MPI_DOUBLE, rcv, tag, MPI_COMM_WORLD, &Stat);
 
 
@@ -94,7 +97,9 @@ int main(int argc, char *argv[])
 
     knnresult knnresall;
     knnresall.nidx  = (int *)   malloc( n*p*k*sizeof(int)    );
+    if( knnresall.nidx == NULL ) exit(EXIT_FAILURE);
     knnresall.ndist = (double *)malloc( n*p*k*sizeof(double) );
+    if( knnresall.ndist == NULL ) exit(EXIT_FAILURE);
     knnresall.m = n*p;
     knnresall.k = k;
 
