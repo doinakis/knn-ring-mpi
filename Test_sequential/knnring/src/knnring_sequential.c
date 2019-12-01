@@ -1,5 +1,5 @@
 /*
-*Sequential of kNN
+*Sequential Implementation of kNN
 *Doinakis Michail
 *e-mail: doinakis@ece.auth.gr
 */
