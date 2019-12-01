@@ -1,5 +1,5 @@
 /*
-*Implementation of kNN
+*Asynchronous Implementation of kNN
 *Doinakis Michail
 *e-mail: doinakis@ece.auth.gr
 */
